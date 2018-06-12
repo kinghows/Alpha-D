@@ -3,7 +3,7 @@
 
 执行：
 
-直接下载Alpha-D.rar，或exe目录
+直接下载Alpha-D.rar，或exe目录（默认分辨率：1920x1080）
 
 功能：
 
@@ -24,3 +24,5 @@
 打包Windows执行程序：
 
 python myAlpha-D.py py2exe
+
+人脸识别采用腾讯：[人脸识别 API](http://ai.qq.com/)；
