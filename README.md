@@ -3,7 +3,7 @@
 
 执行：
 
-直接下载Alpha-D.rar，或exe目录（默认分辨率：1920x1080）
+直接下载exe目录，点击 Alpha-D.exe
 
 功能：
 
@@ -11,7 +11,11 @@
 
 2、选择男女，颜值下限，刷页数，点击刷抖音，自动关注，点赞符合条件的帅哥美女。
 
-安装：
+（默认分辨率：1920x1080）
+
+如果分辨率不同，请尝试自己修改翻页，关注，点赞的X，Y的值
+
+开发环境安装：
 
 1、python 2.7 32位版本：https://www.python.org/downloads/release/python-2714/
 
@@ -21,8 +25,8 @@
 
 4、py2exe-0.6.9.win32-py2.6.exe ：https://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/
 
-打包Windows执行程序：
+人脸识别：
 
-python myAlpha-D.py py2exe
+采用腾讯：[人脸识别 API](http://ai.qq.com/)
 
-人脸识别采用腾讯：[人脸识别 API](http://ai.qq.com/)；
+免费API不能并发，如果看到system busy，可以使用自己申请app_id,app_key
