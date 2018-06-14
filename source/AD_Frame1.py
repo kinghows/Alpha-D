@@ -73,25 +73,29 @@ def check_screenshot():
 def create(parent):
     return Frame1(parent)
 
-[wxID_FRAME1, wxID_FRAME1BUTTON1, wxID_FRAME1BUTTON2, wxID_FRAME1BUTTON5, 
- wxID_FRAME1BUTTON6, wxID_FRAME1GENERICDIRCTRL1, wxID_FRAME1PANEL1, 
- wxID_FRAME1RADIOBUTTON1, wxID_FRAME1RADIOBUTTON2, 
- wxID_FRAME1SASHLAYOUTWINDOW1, wxID_FRAME1STATICTEXT1, wxID_FRAME1STATICTEXT2, 
- wxID_FRAME1STATICTEXT3, wxID_FRAME1TEXTCTRL1, wxID_FRAME1TEXTCTRL2, 
+[wxID_FRAME1, wxID_FRAME1APP_ID, wxID_FRAME1APP_KEY, wxID_FRAME1BEAUTY, 
+ wxID_FRAME1BTN_CLEAR, wxID_FRAME1BTN_FOLLOW, wxID_FRAME1BTN_MOBILE, 
+ wxID_FRAME1BTN_NEXT, wxID_FRAME1BTN_STAR, wxID_FRAME1BTN_START, 
+ wxID_FRAME1BTN_TEST_BEAUTY, wxID_FRAME1FOLLOW_X, wxID_FRAME1FOLLOW_Y, 
+ wxID_FRAME1GENERICDIRCTRL1, wxID_FRAME1NEXT_X, wxID_FRAME1NEXT_Y, 
+ wxID_FRAME1PANEL1, wxID_FRAME1RADIOBUTTON1, wxID_FRAME1RADIOBUTTON2, 
+ wxID_FRAME1SASHLAYOUTWINDOW1, wxID_FRAME1STAR_X, wxID_FRAME1STAR_Y, 
+ wxID_FRAME1STATICTEXT1, wxID_FRAME1STATICTEXT2, wxID_FRAME1STATICTEXT3, 
+ wxID_FRAME1STATICTEXT4, wxID_FRAME1STATICTEXT5, wxID_FRAME1TEXTCTRL2, 
  wxID_FRAME1TEXTRETURN, 
-] = [wx.NewId() for _init_ctrls in range(16)]
+] = [wx.NewId() for _init_ctrls in range(29)]
 
 class Frame1(wx.Frame):
     def _init_ctrls(self, prnt):
         # generated method, don't edit
         wx.Frame.__init__(self, id=wxID_FRAME1, name='', parent=prnt,
-              pos=wx.Point(438, 56), size=wx.Size(873, 703),
+              pos=wx.Point(438, 55), size=wx.Size(873, 704),
               style=wx.DEFAULT_FRAME_STYLE, title=u'Alpha-D')
-        self.SetClientSize(wx.Size(857, 664))
+        self.SetClientSize(wx.Size(857, 665))
         self.Bind(wx.EVT_SIZE, self.OnFrame1Size)
 
         self.panel1 = wx.Panel(id=wxID_FRAME1PANEL1, name='panel1', parent=self,
-              pos=wx.Point(392, 0), size=wx.Size(463, 664),
+              pos=wx.Point(392, -8), size=wx.Size(463, 664),
               style=wx.TAB_TRAVERSAL)
         self.panel1.SetMinSize(wx.Size(455, 778))
 
@@ -107,38 +111,39 @@ class Frame1(wx.Frame):
               id=wxID_FRAME1SASHLAYOUTWINDOW1)
 
         self.textReturn = wx.TextCtrl(id=wxID_FRAME1TEXTRETURN,
-              name=u'textReturn', parent=self.panel1, pos=wx.Point(104, 0),
+              name=u'textReturn', parent=self.panel1, pos=wx.Point(104, 8),
               size=wx.Size(1110, 1050), style=wx.TE_MULTILINE, value='')
 
-        self.button2 = wx.Button(id=wxID_FRAME1BUTTON2,
-              label=u'\u5237\u6296\u97f3', name='button2', parent=self.panel1,
+        self.btn_start = wx.Button(id=wxID_FRAME1BTN_START,
+              label=u'\u5f00\u59cb', name=u'btn_start', parent=self.panel1,
               pos=wx.Point(16, 144), size=wx.Size(75, 24), style=0)
-        self.button2.Bind(wx.EVT_BUTTON, self.OnButton2Button,
-              id=wxID_FRAME1BUTTON2)
+        self.btn_start.Bind(wx.EVT_BUTTON, self.OnButton2Button,
+              id=wxID_FRAME1BTN_START)
 
         self.genericDirCtrl1 = wx.GenericDirCtrl(defaultFilter=0, dir='.',
-              filter=u'Fichier png(*.png,*.jpg)|*.png;*.jpg', id=wxID_FRAME1GENERICDIRCTRL1,
-              name='genericDirCtrl1', parent=self.sashLayoutWindow1,
-              pos=wx.Point(0, 0), size=wx.Size(392, 664),
+              filter=u'Fichier png(*.png,*.jpg)|*.png;*.jpg',
+              id=wxID_FRAME1GENERICDIRCTRL1, name='genericDirCtrl1',
+              parent=self.sashLayoutWindow1, pos=wx.Point(0, 0),
+              size=wx.Size(392, 664),
               style=wx.DIRCTRL_3D_INTERNAL | wx.SUNKEN_BORDER)
         self.genericDirCtrl1.SetMinSize(wx.Size(270, 664))
         self.genericDirCtrl1.Bind(wx.EVT_TREE_SEL_CHANGED, self.OnSel)
 
-        self.button5 = wx.Button(id=wxID_FRAME1BUTTON5,
-              label=u'\u5f53\u524d\u8bbe\u5907', name='button5',
+        self.btn_mobile = wx.Button(id=wxID_FRAME1BTN_MOBILE,
+              label=u'\u5f53\u524d\u8bbe\u5907', name=u'btn_mobile',
               parent=self.panel1, pos=wx.Point(16, 240), size=wx.Size(75, 24),
               style=0)
-        self.button5.Bind(wx.EVT_BUTTON, self.OnButton5Button,
-              id=wxID_FRAME1BUTTON5)
+        self.btn_mobile.Bind(wx.EVT_BUTTON, self.OnButton5Button,
+              id=wxID_FRAME1BTN_MOBILE)
 
-        self.button6 = wx.Button(id=wxID_FRAME1BUTTON6,
-              label=u'\u6e05\u7a7a\u7ed3\u679c', name='button6',
+        self.btn_clear = wx.Button(id=wxID_FRAME1BTN_CLEAR,
+              label=u'\u6e05\u7a7a\u7ed3\u679c', name=u'btn_clear',
               parent=self.panel1, pos=wx.Point(16, 288), size=wx.Size(75, 24),
               style=0)
-        self.button6.Bind(wx.EVT_BUTTON, self.OnButton6Button,
-              id=wxID_FRAME1BUTTON6)
+        self.btn_clear.Bind(wx.EVT_BUTTON, self.OnButton6Button,
+              id=wxID_FRAME1BTN_CLEAR)
 
-        self.textCtrl1 = wx.TextCtrl(id=wxID_FRAME1TEXTCTRL1, name='textCtrl1',
+        self.beauty = wx.TextCtrl(id=wxID_FRAME1BEAUTY, name=u'beauty',
               parent=self.panel1, pos=wx.Point(48, 16), size=wx.Size(48, 22),
               style=0, value=u'80')
 
@@ -176,12 +181,70 @@ class Frame1(wx.Frame):
               parent=self.panel1, pos=wx.Point(8, 88), size=wx.Size(36, 14),
               style=0)
 
-        self.button1 = wx.Button(id=wxID_FRAME1BUTTON1,
-              label=u'\u989c\u503c\u68c0\u6d4b', name='button1',
+        self.btn_test_beauty = wx.Button(id=wxID_FRAME1BTN_TEST_BEAUTY,
+              label=u'\u989c\u503c\u68c0\u6d4b', name=u'btn_test_beauty',
               parent=self.panel1, pos=wx.Point(16, 192), size=wx.Size(75, 24),
               style=0)
-        self.button1.Bind(wx.EVT_BUTTON, self.OnButton1Button,
-              id=wxID_FRAME1BUTTON1)
+        self.btn_test_beauty.Bind(wx.EVT_BUTTON, self.OnButton1Button,
+              id=wxID_FRAME1BTN_TEST_BEAUTY)
+
+        self.app_key = wx.TextCtrl(id=wxID_FRAME1APP_KEY, name=u'app_key',
+              parent=self.panel1, pos=wx.Point(0, 632), size=wx.Size(104, 22),
+              style=0, value=u'ecTptvOyErjHiNgo')
+
+        self.staticText4 = wx.StaticText(id=wxID_FRAME1STATICTEXT4,
+              label=u'app_key\uff1a', name='staticText4', parent=self.panel1,
+              pos=wx.Point(0, 616), size=wx.Size(58, 14), style=0)
+
+        self.app_id = wx.TextCtrl(id=wxID_FRAME1APP_ID, name=u'app_id',
+              parent=self.panel1, pos=wx.Point(0, 592), size=wx.Size(104, 22),
+              style=0, value=u'1106941552')
+
+        self.staticText5 = wx.StaticText(id=wxID_FRAME1STATICTEXT5,
+              label=u'app_id\uff1a', name='staticText5', parent=self.panel1,
+              pos=wx.Point(0, 576), size=wx.Size(48, 14), style=0)
+
+        self.star_y = wx.TextCtrl(id=wxID_FRAME1STAR_Y, name=u'star_y',
+              parent=self.panel1, pos=wx.Point(56, 520), size=wx.Size(40, 24),
+              style=0, value=u'960')
+
+        self.star_x = wx.TextCtrl(id=wxID_FRAME1STAR_X, name=u'star_x',
+              parent=self.panel1, pos=wx.Point(8, 520), size=wx.Size(40, 24),
+              style=0, value=u'987')
+
+        self.btn_star = wx.Button(id=wxID_FRAME1BTN_STAR, label=u'\u70b9\u8d5e',
+              name=u'btn_star', parent=self.panel1, pos=wx.Point(16, 552),
+              size=wx.Size(75, 24), style=0)
+        self.btn_star.Bind(wx.EVT_BUTTON, self.OnBtn_starButton,
+              id=wxID_FRAME1BTN_STAR)
+
+        self.btn_follow = wx.Button(id=wxID_FRAME1BTN_FOLLOW,
+              label=u'\u5173\u6ce8', name=u'btn_follow', parent=self.panel1,
+              pos=wx.Point(16, 488), size=wx.Size(75, 24), style=0)
+        self.btn_follow.Bind(wx.EVT_BUTTON, self.OnBtn_followButton,
+              id=wxID_FRAME1BTN_FOLLOW)
+
+        self.btn_next = wx.Button(id=wxID_FRAME1BTN_NEXT, label=u'\u7ffb\u9875',
+              name=u'btn_next', parent=self.panel1, pos=wx.Point(16, 424),
+              size=wx.Size(75, 24), style=0)
+        self.btn_next.Bind(wx.EVT_BUTTON, self.OnBtn_nextButton,
+              id=wxID_FRAME1BTN_NEXT)
+
+        self.follow_x = wx.TextCtrl(id=wxID_FRAME1FOLLOW_X, name=u'follow_x',
+              parent=self.panel1, pos=wx.Point(8, 456), size=wx.Size(40, 22),
+              style=0, value=u'987')
+
+        self.follow_y = wx.TextCtrl(id=wxID_FRAME1FOLLOW_Y, name=u'follow_y',
+              parent=self.panel1, pos=wx.Point(56, 456), size=wx.Size(40, 22),
+              style=0, value=u'796')
+
+        self.next_x = wx.TextCtrl(id=wxID_FRAME1NEXT_X, name=u'next_x',
+              parent=self.panel1, pos=wx.Point(8, 392), size=wx.Size(40, 24),
+              style=0, value=u'540')
+
+        self.next_y = wx.TextCtrl(id=wxID_FRAME1NEXT_Y, name=u'next_y',
+              parent=self.panel1, pos=wx.Point(56, 392), size=wx.Size(40, 22),
+              style=0, value=u'965')
 
     def __init__(self, parent):
         self._init_ctrls(parent)
@@ -247,10 +310,10 @@ class Frame1(wx.Frame):
             
     def next_page(self):
         cmd = 'input swipe {x1} {y1} {x2} {y2} {duration}'.format(
-            x1=self.config['center_point']['x'],
-            y1=self.config['center_point']['y']+self.config['center_point']['ry'],
-            x2=self.config['center_point']['x'],
-            y2=self.config['center_point']['y'],
+            x1=int(self.next_x.Value),
+            y1=int(self.next_y.Value)+300,
+            x2=int(self.next_x.Value),
+            y2=int(self.next_y.Value),
             duration=200
         )
         self.adb_shell(cmd)
@@ -258,23 +321,33 @@ class Frame1(wx.Frame):
 
     def follow_user(self):
         cmd = 'input tap {x} {y}'.format(
-            x=self.config['follow_bottom']['x'] + random.randint(-10,10),
-            y=self.config['follow_bottom']['y'] + random.randint(-10,10)
+            x=int(self.follow_x.Value) + random.randint(-10,10),
+            y=int(self.follow_y.Value) + random.randint(-10,10)
         )
-        self.textReturn.AppendText(cmd+'\n')
         self.adb_shell(cmd)
         time.sleep(0.5)
 
 
     def thumbs_up(self):
         cmd = 'input tap {x} {y}'.format(
-            x=self.config['star_bottom']['x'] + random.randint(-10,10),
-            y=self.config['star_bottom']['y'] + random.randint(-10,10)
+            x=int(self.star_x.Value) + random.randint(-10,10),
+            y=int(self.star_y.Value) + random.randint(-10,10)
         )
-        self.textReturn.AppendText(cmd+'\n')
         self.adb_shell(cmd)
         time.sleep(0.5)
+        
+    def OnBtn_starButton(self, event):
+        self.thumbs_up()
+        event.Skip()
 
+    def OnBtn_followButton(self, event):
+        self.follow_user()
+        event.Skip()
+
+    def OnBtn_nextButton(self, event):
+        self.next_page()
+        event.Skip()
+        
     def OnButton2Button(self, event):
         n = 1
         while n <=int(self.textCtrl2.Value.encode("ascii")):
@@ -309,7 +382,7 @@ class Frame1(wx.Frame):
                     elif self.gender==1 and face['gender'] > 50:
                         beauty = face['beauty']
 
-                if beauty >= int(self.textCtrl1.Value):
+                if beauty >= int(self.beauty.Value):
                     self.thumbs_up()
                     self.follow_user()
                     self.textReturn.AppendText('Focus a beauty!'+'\n')
@@ -357,8 +430,8 @@ class Frame1(wx.Frame):
     def face_detectface(self, image, mode):
         self.url = 'https://api.ai.qq.com/fcgi-bin/face/face_detectface'
         self.data = {}
-        setParams(self.data, 'app_id', '1106941552')
-        setParams(self.data, 'app_key', 'ecTptvOyErjHiNgo')
+        setParams(self.data, 'app_id', self.app_id.Value)
+        setParams(self.data, 'app_key', self.app_key.Value)
         setParams(self.data, 'mode', mode)
         setParams(self.data, 'time_stamp', int(time.time()))
         setParams(self.data, 'nonce_str', int(time.time()))
@@ -415,3 +488,5 @@ class Frame1(wx.Frame):
             else:
                 self.textReturn.AppendText(str(dict_rsp['msg'])+'\n')
         event.Skip()
+
+
