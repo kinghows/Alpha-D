@@ -351,8 +351,6 @@ class Frame1(wx.Frame):
     def OnButton2Button(self, event):
         n = 1
         while n <=int(self.textCtrl2.Value.encode("ascii")):
-            self.next_page()
-            time.sleep(1)
             pull_screenshot()
                         
             self.resize_image('dy.png', 'optimized.png', 1024*1024)
@@ -392,6 +390,8 @@ class Frame1(wx.Frame):
                 self.textReturn.AppendText(str(dict_rsp['msg'])+'\n')
                 
             n += 1
+            self.next_page()
+            time.sleep(1)
 
         event.Skip()
         
