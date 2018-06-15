@@ -5,6 +5,10 @@
 
 直接下载exe目录，点击 Alpha-D.exe
 
+采用腾讯：[人脸识别 API](http://ai.qq.com/)
+
+免费API不能并发，请先在上面URL申请腾讯AI的人脸检测与分析的app_id,app_key
+
 功能：
 
 1、左面窗口选择本地图片，点击颜值检测，可以检测颜值
@@ -25,8 +29,5 @@
 
 4、py2exe-0.6.9.win32-py2.6.exe ：https://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/
 
-人脸识别：
 
-采用腾讯：[人脸识别 API](http://ai.qq.com/)
 
-免费API不能并发，如果看到system busy，请使用自己申请app_id,app_key

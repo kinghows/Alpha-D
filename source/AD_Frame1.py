@@ -116,8 +116,8 @@ class Frame1(wx.Frame):
 
         self.btn_start = wx.Button(id=wxID_FRAME1BTN_START,
               label=u'\u5f00\u59cb', name=u'btn_start', parent=self.panel1,
-              pos=wx.Point(16, 144), size=wx.Size(75, 24), style=0)
-        self.btn_start.Bind(wx.EVT_BUTTON, self.OnButton2Button,
+              pos=wx.Point(16, 128), size=wx.Size(75, 24), style=0)
+        self.btn_start.Bind(wx.EVT_BUTTON, self.Onbtn_startButton,
               id=wxID_FRAME1BTN_START)
 
         self.genericDirCtrl1 = wx.GenericDirCtrl(defaultFilter=0, dir='.',
@@ -131,16 +131,16 @@ class Frame1(wx.Frame):
 
         self.btn_mobile = wx.Button(id=wxID_FRAME1BTN_MOBILE,
               label=u'\u5f53\u524d\u8bbe\u5907', name=u'btn_mobile',
-              parent=self.panel1, pos=wx.Point(16, 240), size=wx.Size(75, 24),
+              parent=self.panel1, pos=wx.Point(16, 296), size=wx.Size(75, 24),
               style=0)
-        self.btn_mobile.Bind(wx.EVT_BUTTON, self.OnButton5Button,
+        self.btn_mobile.Bind(wx.EVT_BUTTON, self.Onbtn_mobileButton,
               id=wxID_FRAME1BTN_MOBILE)
 
         self.btn_clear = wx.Button(id=wxID_FRAME1BTN_CLEAR,
               label=u'\u6e05\u7a7a\u7ed3\u679c', name=u'btn_clear',
-              parent=self.panel1, pos=wx.Point(16, 288), size=wx.Size(75, 24),
+              parent=self.panel1, pos=wx.Point(16, 336), size=wx.Size(75, 24),
               style=0)
-        self.btn_clear.Bind(wx.EVT_BUTTON, self.OnButton6Button,
+        self.btn_clear.Bind(wx.EVT_BUTTON, self.Onbtn_clearButton,
               id=wxID_FRAME1BTN_CLEAR)
 
         self.beauty = wx.TextCtrl(id=wxID_FRAME1BEAUTY, name=u'beauty',
@@ -183,9 +183,9 @@ class Frame1(wx.Frame):
 
         self.btn_test_beauty = wx.Button(id=wxID_FRAME1BTN_TEST_BEAUTY,
               label=u'\u989c\u503c\u68c0\u6d4b', name=u'btn_test_beauty',
-              parent=self.panel1, pos=wx.Point(16, 192), size=wx.Size(75, 24),
+              parent=self.panel1, pos=wx.Point(16, 216), size=wx.Size(75, 24),
               style=0)
-        self.btn_test_beauty.Bind(wx.EVT_BUTTON, self.OnButton1Button,
+        self.btn_test_beauty.Bind(wx.EVT_BUTTON, self.Onbtn_test_beautyButton,
               id=wxID_FRAME1BTN_TEST_BEAUTY)
 
         self.app_key = wx.TextCtrl(id=wxID_FRAME1APP_KEY, name=u'app_key',
@@ -250,7 +250,6 @@ class Frame1(wx.Frame):
         self._init_ctrls(parent)
         self.FileName=None
         self.gender =0
-        self.config ={"center_point":{"x": 540,"y": 965,"rx": 10,"ry": 300},"follow_bottom":{"x": 987,"y": 796,"rx": 10,"ry": 10},"star_bottom":{"x": 987,"y": 960,"rx": 10,"ry": 10}}
         try:      
             if check_screenshot():
                 cmd = "adb shell wm size"  
@@ -348,7 +347,7 @@ class Frame1(wx.Frame):
         self.next_page()
         event.Skip()
         
-    def OnButton2Button(self, event):
+    def Onbtn_startButton(self, event):
         n = 1
         while n <=int(self.textCtrl2.Value.encode("ascii")):
             pull_screenshot()
@@ -357,7 +356,7 @@ class Frame1(wx.Frame):
 
             with open('optimized.png', 'rb') as bin_data:
                 image_data = bin_data.read()
-
+                
             str_rsp = self.face_detectface(image_data,0)
             dict_rsp = json.loads(str_rsp)
             
@@ -395,7 +394,7 @@ class Frame1(wx.Frame):
 
         event.Skip()
         
-    def OnButton5Button(self, event):
+    def Onbtn_mobileButton(self, event):
         size_str = os.popen('adb shell wm size').read()
         device_str = os.popen('adb shell getprop ro.product.model').read()
         density_str = os.popen('adb shell wm density').read()
@@ -404,7 +403,7 @@ class Frame1(wx.Frame):
         self.textReturn.AppendText(density_str+'\n')
         event.Skip()
 
-    def OnButton6Button(self, event):
+    def Onbtn_clearButton(self, event):
         self.textReturn.Clear()
         event.Skip()
 
@@ -441,6 +440,19 @@ class Frame1(wx.Frame):
         setParams(self.data, 'sign', sign_str)
         return self.invoke(self.data)
     
+    def face_detectmultiface(self, image):
+        self.url = 'https://api.ai.qq.com/fcgi-bin/face/face_detectmultiface'
+        self.data = {}
+        setParams(self.data, 'app_id', self.app_id.Value)
+        setParams(self.data, 'app_key', self.app_key.Value)
+        setParams(self.data, 'time_stamp', int(time.time()))
+        setParams(self.data, 'nonce_str', int(time.time()))
+        image_data = base64.b64encode(image)
+        setParams(self.data, 'image', image_data.decode("utf-8"))
+        sign_str = genSignString(self.data)
+        setParams(self.data, 'sign', sign_str)
+        return self.invoke(self.data)
+    
     def resize_image(self, origin_img, optimize_img, threshold):
         with Image.open(origin_img) as im:
             width, height = im.size
@@ -459,7 +471,7 @@ class Frame1(wx.Frame):
             else:
                 im.save(optimize_img)    
             
-    def OnButton1Button(self, event):
+    def Onbtn_test_beautyButton(self, event):
         if os.path.isfile(self.FileName):
             self.textReturn.AppendText(self.FileName+'\n')
             
@@ -467,24 +479,24 @@ class Frame1(wx.Frame):
             
             with open('optimized.png', 'rb') as bin_data:
                 image_data = bin_data.read()
-            
+                
             str_rsp = self.face_detectface(image_data,0)
             dict_rsp = json.loads(str_rsp)
-            #file = open("e:\json.txt","w")
-            #file.write(str_rsp)
-            #file.close()
+            file = open("e:\json.txt","w")
+            file.write(str_rsp)
+            file.close()
             
             if dict_rsp['ret'] == 0:
+                img = Image.open('optimized.png')
                 for face in dict_rsp['data']['face_list']:
                     face_area = (face['x'], face['y'], face['x']+face['width'], face['y']+face['height'])
-                img = Image.open('optimized.png')
-                cropped_img = img.crop(face_area).convert('RGB')
-                cropped_img.save('./face/'+str(face['gender'])+'_'+str(face['beauty'])+'_'+str(face['face_id'])+'.png')
-                self.textReturn.AppendText('face_id: '+ str(face['face_id'])+'\n')
-                self.textReturn.AppendText('gender: '+ str(face['gender'])+'\n')
-                self.textReturn.AppendText('beauty: '+ str(face['beauty'])+'\n')
-                self.textReturn.AppendText('age: '+ str(face['age'])+'\n')
-                self.textReturn.AppendText('expression: '+ str(face['expression'])+'\n')
+                    cropped_img = img.crop(face_area).convert('RGB')
+                    cropped_img.save('./face/'+str(face['gender'])+'_'+str(face['age'])+'_'+str(face['beauty'])+'_'+str(face['face_id'])+'.png')
+                    self.textReturn.AppendText('face_id: '+ str(face['face_id'])+'\n')
+                    self.textReturn.AppendText('gender: '+ str(face['gender'])+'\n')
+                    self.textReturn.AppendText('beauty: '+ str(face['beauty'])+'\n')
+                    self.textReturn.AppendText('age: '+ str(face['age'])+'\n')
+                    self.textReturn.AppendText('expression: '+ str(face['expression'])+'\n')
             else:
                 self.textReturn.AppendText(str(dict_rsp['msg'])+'\n')
         event.Skip()
