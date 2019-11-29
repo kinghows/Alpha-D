@@ -29,5 +29,16 @@
 
 4、py2exe-0.6.9.win32-py2.6.exe ：https://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/
 
+## 好玩的Alpha系列，喜欢的打颗星：
+
+- [Alpha-12306：买个票](https://github.com/kinghows/Alpha-12306)
+
+- [Alpha-B：下载关注的最新B站视频](https://github.com/kinghows/Alpha-B)
+
+- [Alpha-C：智能闲聊](https://github.com/kinghows/Alpha-C)
+
+- [Alpha-P：检测手机照片的拍摄时间和地点以及颜值](https://github.com/kinghows/Alpha-P)
+
+- [Alpha-J：微信跳一跳python玩法](https://github.com/kinghows/Alpha-J)
 
 
